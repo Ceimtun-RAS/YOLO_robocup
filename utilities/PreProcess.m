@@ -5,7 +5,7 @@
 
 function [ObjectDetectionDatastore] = PreProcess(varargin)
 
-defaultPath = 'data/images'; % Where are the training images 
+defaultPath = 'YOLO_roboup/data/images'; % Where are the training images 
 
 p = inputParser; 
 
@@ -24,7 +24,7 @@ NoInput = p.Results.NoInput;
 
 dataStore = imageDatastore(imageDatastorePath, 'FileExtensions', [".jpg", ".png"]);
 
-save("data/dataStore", "dataStore");  % Save the datastore from folder 
+save("YOLO_robocup/data/dataStore", "dataStore");  % Save the datastore from folder 
 
 msg = join([...
     "Do you want to label the images from dataStore in [",... 

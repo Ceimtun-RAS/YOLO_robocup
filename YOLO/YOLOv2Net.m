@@ -27,7 +27,7 @@ classdef YOLOv2Net
          end 
         
          function  [lgraph , obj] = createLayers(obj)
-            addpath('utilities'); 
+            addpath('YOLO_robocup/utilities'); 
             
             disp("Creating layer..."); 
             layer = CreateLayers(); 
@@ -48,10 +48,10 @@ classdef YOLOv2Net
             lgraph = obj.LGraph; 
 
             options = trainingOptions('adam',...
-                "InitialLearnRate", 0.001 ,...
+                "InitialLearnRate", 0.0001 ,...
                 "Verbose", true,...
-                "MiniBatchSize", 20, "MaxEpochs",50, ...
-                'Shuffle',"every-epoch", "VerboseFrequency",20);            
+                "MiniBatchSize", 30, "MaxEpochs",100, ...
+                'Shuffle',"every-epoch", "VerboseFrequency",30);            
             
             ds = obj.DataStore; 
             [detectorYolo2, info] = trainYOLOv2ObjectDetector(ds, lgraph, options); 
